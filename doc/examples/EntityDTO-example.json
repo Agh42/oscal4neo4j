@@ -1,0 +1,51 @@
+{
+    "anchor": {
+        "id": null,
+        "labels": [
+            "Label1",
+            "Label2"
+        ],
+        "dynamicRelationships": {},
+        "versionOf": [
+            {
+                "id": null,
+                "entityVersion": {
+                    "id": null,
+                    "name": "Name1",
+                    "abbreviation": "Abbr1",
+                    "lastModifiedBy": null,
+                    "dynamicProperties": {
+                        "keyDate": "1977-10-20T00: 00: 00Z",
+                        "keyString": "value1",
+                        "keyInt": 42,
+                        "keyArray": [
+                            "one",
+                            "two",
+                            "three"
+                        ],
+                        "keyDouble": 4.2
+                    }
+                },
+                "from": "2021-03-20T14: 24: 09.055170Z",
+                "until": null
+            }
+        ]
+    },
+    "version": {
+        "id": null,
+        "name": "Name1",
+        "abbreviation": "Abbr1",
+        "lastModifiedBy": null,
+        "dynamicProperties": {
+            "keyDate": "1977-10-20T00: 00: 00Z",
+            "keyString": "value1",
+            "keyInt": 42,
+            "keyArray": [
+                "one",
+                "two",
+                "three"
+            ],
+            "keyDouble": 4.2
+        }
+    }
+}
