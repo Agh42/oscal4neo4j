@@ -86,12 +86,19 @@ The complete database schema currently looks as follows (this includes nodes fro
 
 This project is not endorsed by or affiliated with NIST.gov. For official publications please go to [https://github.com/usnistgov](https://github.com/usnistgov).
 
-This project includes a mix of the following:
+This project is copyrighted under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).
 
-## OSCAL copyright:
-Open source work by the U.S. government that is in the public domain contributed under the National Institute of Standards and Technology License.
-Open source work contributed by members of the public based on the CC0 1.0 Universal license.
+## Original OSCAL copyright:
+"Open source work by the U.S. government that is in the public domain contributed under the National Institute of Standards and Technology License.
+Open source work contributed by members of the public based on the CC0
+1.0 Universal license."
 
-## OSCAL Content copyright:
-As a work of the United States government, this project is in the public domain within the United States under the National Institute of Standards and Technology License. Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 Universal public domain dedication.
+## Original OSCAL Content copyright:
+"As a work of the United States government, this project is in the
+public domain within the United States under the National Institute of
+Standards and Technology License. Additionally, we waive copyright and
+related rights in the work worldwide through the CC0 1.0 Universal
+public domain dedication."
+
+
 
