@@ -69,12 +69,11 @@ LIMIT 10;
 
 # find all enhancements, parts and params for one control:
 # (expand ac2.5 to also see working link to ac-11 fro within the prose)
-MATCH p=(c:rev5Control)<-[r:IS_ENHANCEMENT_OF*]-(c2:rev5Control)-[:HAS_PART*]->(part)
+MATCH p=(c:rev5Control)<-[:IS_ENHANCEMENT_OF*]-(c2:rev5Control)-[:HAS_PART*]->(part)
 WHERE c.id='ac-2'
 WITH p, c2
 MATCH p2=(c2)-[:HAS_PARAM]->(param)
 RETURN p,p2 limit 1000;
-
 
 # same, but also show set-param contraints from profiles:
 MATCH p=(c:rev5Control)<-[r:IS_ENHANCEMENT_OF*]-(c2:rev5Control)-[:HAS_PART*]->(part)
@@ -107,4 +106,23 @@ MATCH (p:Profile{name:"HIGH"})-[:INCLUDES_CONTROL]->(c)
 WHERE NOT (c)<-[:INCLUDES_CONTROL]-(:Profile{name:"MODERATE"})
 RETURN p, c;
 
+# Select control-enhancement "AC-2.1" with assessment-methods,
+# assessment-objectives and assessment-objects.
+# Tabular output.
+MATCH p=(c:rev5Control)-[:HAS_PART*]->(part)
+WHERE c.id='ac-2.1'
+WITH p, c, part
+MATCH (part)-[:HAS_PROP]->(prop)
+OPTIONAL MATCH (part)-[:HAS_PART]->(subpart)
+RETURN c.id, c.title, part.name, part.prose, prop.value, subpart.name, subpart.prose
+ORDER BY c.id, part.prose, part.name, subpart.name;
 
+# Select control-enhancement "AC-2.1" with assessment-methods,
+# assessment-objectives and assessment-objects.
+# Graph output.
+MATCH p=(c:rev5Control)-[:HAS_PART*]->(part)
+WHERE c.id='ac-2.1'
+WITH p, c, part
+MATCH (part)-[:HAS_PROP]->(prop)
+OPTIONAL MATCH (part)-[:HAS_PART]->(subpart)
+RETURN c, part, prop, subpart;
