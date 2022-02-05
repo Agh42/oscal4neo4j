@@ -4,6 +4,7 @@ This repository includes some datasets based on publicly available sources. You 
 is no need to download the files first.
 
 ## OSCAL: NIST 800-53 rev5 
+### Now also including SP 800-53A (Assessment Layer)
 
 In the data directory you will find a set of Neo4J cypher commands. They will scrape the [OSCAL](https://github.com/usnistgov/OSCAL) representation 
 of the [NIST 800-53](https://github.com/usnistgov/oscal-content) catalog layer directly from Github 
@@ -33,6 +34,27 @@ There are also scripts to scrape the [profile layer](https://pages.nist.gov/OSCA
 
 ![](doc/img/sc-12-loop.png)
 
+
+## Assessments (NIST SP 800-53A)
+
+### A query shows the assessment-objective as well as asessment-methods (i.e. "examine", "test", "interview) for the control AC-2.1. 
+
+### Also included are the assessment-objects which should be examined as well as the required interview-partners:
+
+![](doc/img/query-assessment-info-for-ac2_1-table.png)
+
+### Assessment-methods visualized as graph:
+
+![](doc/img/query-assessment-info-for-ac2_1-graph.png)
+
+### Listing all required interview-partners for the entire control family AC (access control):
+
+![](doc/img/query-assessment-info-for-ac-interviewpartners.png)
+ 
+ 
+ ### Opposite view: listing all controls that can be interviewed with one distinct set of interview-partners over all control families:
+
+ ![](doc/img/query-assessment-info-for-ac-controls-by-interviewpartners.png)
 ## OSCAL: FedRAMP profiles (rev4)
 
 These scripts will scrape the [FedRAMP](https://github.com/GSA/fedramp-automation) profiles (LOW, MEDIUM, HIGH) form the Github repository directly into Neo4J. They will be linked to the previously imported 800-53 controls and control enhancements
