@@ -10,7 +10,7 @@ In the data directory you will find a set of Neo4J cypher commands. They will sc
 of the [NIST 800-53](https://github.com/usnistgov/oscal-content) catalog layer directly from Github 
 into the Neo4J database.
 
-There are also scripts to scrape the [profile layer](https://pages.nist.gov/OSCAL/documentation/schema/) (LOW, MEDIUM, HIGH and PRIVACY profiles). These will be linked to the catalog layer nodes so make sure to import these first.
+There are also scripts to scrape the [FedRAMP and NIST profiles](https://pages.nist.gov/OSCAL/documentation/schema/) (LOW, MEDIUM, HIGH and PRIVACY profiles). These will be linked to the catalog layer nodes so make sure to import these first.
 
 ### **Examples:**
 
