@@ -37,7 +37,7 @@ There are also scripts to scrape the [FedRAMP and NIST profiles](https://pages.n
 
 ## Assessments (NIST SP 800-53A)
 
-### A query shows the assessment-objective as well as asessment-methods (i.e. "examine", "test", "interview) for the control AC-2.1. 
+### A query shows the assessment-objective as well as assessment-methods (i.e. "examine", "test", "interview) for the control AC-2.1. 
 
 ### Also included are the assessment-objects which should be examined as well as the required interview-partners:
 
@@ -55,6 +55,7 @@ There are also scripts to scrape the [FedRAMP and NIST profiles](https://pages.n
  ### Opposite view: listing all controls that can be interviewed with one distinct set of interview-partners over all control families:
 
  ![](doc/img/query-assessment-info-for-ac-controls-by-interviewpartners.png)
+
 ## OSCAL: FedRAMP profiles (rev4)
 
 These scripts will scrape the [FedRAMP](https://github.com/GSA/fedramp-automation) profiles (LOW, MEDIUM, HIGH) form the Github repository directly into Neo4J. They will be linked to the previously imported 800-53 controls and control enhancements
