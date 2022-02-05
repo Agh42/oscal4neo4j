@@ -1,7 +1,8 @@
 # OSCAL Content for Neo4J
 
-This repository includes some datasets based on publicly available sources. You will need the APOC library to scrape them directly from Github into the database. There
-is no need to download the files first.
+This repository features scripts written in the Cypher query language that can be used to import control catalogs and other data represented in the OSCAL format into a Neo4J graph database. 
+
+You will need the APOC library to scrape them directly from Github into the database. There is no need to download the files first.
 
 ## OSCAL: NIST 800-53 rev5 
 ### Now also including SP 800-53A (Assessment Layer)
@@ -82,6 +83,8 @@ Here: additional requirements and guidance are added to control RA-5.6:
 ## Other sources
 
 There are other publicly available Neo4J databases that can be included as well, such as the graph from the [SCKG](https://gitlab.com/redteam-project/sckg) project.
+
+Combining such sources with the OSCAL imports can enable additional use cases such as compliance mappings between different standards. For instance, assessment results from an OSCAL model can be used to deduce compliance with certain topics from the perspective of a PCI DSS assessor.
 
 SCKG doesn't model all of the standards in the greatest depth (i.e. control enhancements, properties, parts won't be differentiated for 800-53) but it makes up for that by including a lot of standards.
 
