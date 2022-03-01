@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalImplementationCommonAuthorizedPrivilege;
 import io.swagger.model.AssemblyOscalMetadataLink;
 import io.swagger.model.AssemblyOscalMetadataProperty3;
@@ -103,7 +104,7 @@ public class AssemblyOscalImplementationCommonSystemUser   {
    **/
   @Schema(description = "A short common name, abbreviation, or acronym for the user.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getShortName() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getShortName() {
     return shortName;
   }
 

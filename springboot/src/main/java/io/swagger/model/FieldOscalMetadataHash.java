@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -35,7 +36,7 @@ public class FieldOscalMetadataHash   {
   @Schema(required = true, description = "Method by which a hash is derived")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getAlgorithm() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getAlgorithm() {
     return algorithm;
   }
 

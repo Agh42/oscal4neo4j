@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -105,7 +106,7 @@ public class AssemblyOscalMetadataProperty   {
   @Schema(required = true, description = "Indicates the value of the attribute, characteristic, or quality.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getValue() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getValue() {
     return value;
   }
 

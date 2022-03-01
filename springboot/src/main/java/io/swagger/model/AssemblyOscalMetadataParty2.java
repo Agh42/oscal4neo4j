@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalMetadataAddress2;
 import io.swagger.model.AssemblyOscalMetadataLink;
 import io.swagger.model.AssemblyOscalMetadataProperty2;
@@ -134,7 +135,7 @@ public class AssemblyOscalMetadataParty2   {
   @Schema(required = true, description = "A category describing the kind of party the object describes.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public TypeEnum getType() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public TypeEnum getType() {
     return type;
   }
 
@@ -153,7 +154,7 @@ public class AssemblyOscalMetadataParty2   {
    **/
   @Schema(description = "The full name of the party. This is typically the legal name associated with the party.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getName() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getName() {
     return name;
   }
 
@@ -172,7 +173,7 @@ public class AssemblyOscalMetadataParty2   {
    **/
   @Schema(description = "A short common name, abbreviation, or acronym for the party.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getShortName() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getShortName() {
     return shortName;
   }
 

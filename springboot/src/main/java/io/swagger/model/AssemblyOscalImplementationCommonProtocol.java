@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalImplementationCommonPortRange;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class AssemblyOscalImplementationCommonProtocol   {
   @Schema(required = true, description = "The common name of the protocol, which should be the appropriate \"service name\" from the IANA Service Name and Transport Protocol Port Number Registry.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getName() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getName() {
     return name;
   }
 

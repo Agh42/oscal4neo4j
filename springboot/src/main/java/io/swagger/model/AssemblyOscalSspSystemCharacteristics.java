@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalMetadataLink;
 import io.swagger.model.AssemblyOscalMetadataProperty3;
 import io.swagger.model.AssemblyOscalMetadataResponsibleParty3;
@@ -118,7 +119,7 @@ public class AssemblyOscalSspSystemCharacteristics   {
   @Schema(required = true, description = "The full name of the system.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSystemName() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSystemName() {
     return systemName;
   }
 
@@ -137,7 +138,7 @@ public class AssemblyOscalSspSystemCharacteristics   {
    **/
   @Schema(description = "A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSystemNameShort() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSystemNameShort() {
     return systemNameShort;
   }
 
@@ -250,7 +251,7 @@ public class AssemblyOscalSspSystemCharacteristics   {
   @Schema(required = true, description = "The overall information system sensitivity categorization, such as defined by FIPS-199.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSecuritySensitivityLevel() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSecuritySensitivityLevel() {
     return securitySensitivityLevel;
   }
 
