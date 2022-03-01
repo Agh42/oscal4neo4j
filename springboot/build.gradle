@@ -14,6 +14,15 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+
+	compileOnly "org.springframework.boot:spring-boot-starter-web"
+	compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
+	compileOnly "io.springfox:springfox-oas:3.0.0"
+	compileOnly "io.springfox:springfox-swagger-ui:3.0.0"
+	compileOnly "com.github.joschi.jackson:jackson-datatype-threetenbp:2.6.4"
+	compileOnly "javax.validation:validation-api"
+	compileOnly "org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE"
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
