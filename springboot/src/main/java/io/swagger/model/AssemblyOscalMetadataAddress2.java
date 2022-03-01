@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class AssemblyOscalMetadataAddress2   {
    **/
   @Schema(description = "City, town or geographical region for the mailing address.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getCity() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getCity() {
     return city;
   }
 
@@ -114,7 +115,7 @@ public class AssemblyOscalMetadataAddress2   {
    **/
   @Schema(description = "State, province or analogous geographical region for mailing address")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getState() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getState() {
     return state;
   }
 
@@ -133,7 +134,7 @@ public class AssemblyOscalMetadataAddress2   {
    **/
   @Schema(description = "Postal or ZIP code for mailing address")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getPostalCode() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getPostalCode() {
     return postalCode;
   }
 
@@ -152,7 +153,7 @@ public class AssemblyOscalMetadataAddress2   {
    **/
   @Schema(description = "The ISO 3166-1 alpha-2 country code for the mailing address.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getCountry() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getCountry() {
     return country;
   }
 

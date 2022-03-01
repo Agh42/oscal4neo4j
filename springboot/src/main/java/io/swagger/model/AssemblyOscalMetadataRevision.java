@@ -2,9 +2,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.AssemblyOscalMetadataLink;
-import io.swagger.model.AssemblyOscalMetadataProperty;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +77,7 @@ public class AssemblyOscalMetadataRevision   {
   @Schema(description = "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.")
   
     @Valid
-  @Pattern(regexp="^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$")   public OffsetDateTime getPublished() {
+  @Pattern(regexp=ValidationConstants.REGEX_DATE_TIME)   public OffsetDateTime getPublished() {
     return published;
   }
 
@@ -99,7 +97,7 @@ public class AssemblyOscalMetadataRevision   {
   @Schema(description = "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.")
   
     @Valid
-  @Pattern(regexp="^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$")   public OffsetDateTime getLastModified() {
+  @Pattern(regexp=ValidationConstants.REGEX_DATE_TIME)   public OffsetDateTime getLastModified() {
     return lastModified;
   }
 
@@ -118,7 +116,7 @@ public class AssemblyOscalMetadataRevision   {
    **/
   @Schema(description = "A string used to distinguish the current version of the document from other previous (and future) versions.")
   
-  @Pattern(regexp="^\S(.*\S)?$")   public String getVersion() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getVersion() {
     return version;
   }
 
@@ -137,7 +135,7 @@ public class AssemblyOscalMetadataRevision   {
    **/
   @Schema(description = "The OSCAL model version the document was authored against.")
   
-  @Pattern(regexp="^\S(.*\S)?$")   public String getOscalVersion() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getOscalVersion() {
     return oscalVersion;
   }
 

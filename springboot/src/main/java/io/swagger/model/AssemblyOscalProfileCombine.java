@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -64,7 +65,7 @@ public class AssemblyOscalProfileCombine   {
    **/
   @Schema(description = "How clashing controls should be handled")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public MethodEnum getMethod() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public MethodEnum getMethod() {
     return method;
   }
 

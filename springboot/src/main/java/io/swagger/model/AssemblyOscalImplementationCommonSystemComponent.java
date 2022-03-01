@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalImplementationCommonProtocol1;
 import io.swagger.model.AssemblyOscalMetadataLink;
 import io.swagger.model.AssemblyOscalMetadataProperty3;
@@ -93,7 +94,7 @@ public class AssemblyOscalImplementationCommonSystemComponent   {
   @Schema(required = true, description = "A category describing the purpose of the component.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getType() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getType() {
     return type;
   }
 

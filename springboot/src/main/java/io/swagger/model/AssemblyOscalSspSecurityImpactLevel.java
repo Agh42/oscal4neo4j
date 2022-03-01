@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -38,7 +39,7 @@ public class AssemblyOscalSspSecurityImpactLevel   {
   @Schema(required = true, description = "A target-level of confidentiality for the system, based on the sensitivity of information within the system.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSecurityObjectiveConfidentiality() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSecurityObjectiveConfidentiality() {
     return securityObjectiveConfidentiality;
   }
 
@@ -58,7 +59,7 @@ public class AssemblyOscalSspSecurityImpactLevel   {
   @Schema(required = true, description = "A target-level of integrity for the system, based on the sensitivity of information within the system.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSecurityObjectiveIntegrity() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSecurityObjectiveIntegrity() {
     return securityObjectiveIntegrity;
   }
 
@@ -78,7 +79,7 @@ public class AssemblyOscalSspSecurityImpactLevel   {
   @Schema(required = true, description = "A target-level of availability for the system, based on the sensitivity of information within the system.")
       @NotNull
 
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getSecurityObjectiveAvailability() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSecurityObjectiveAvailability() {
     return securityObjectiveAvailability;
   }
 

@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -31,7 +32,7 @@ public class MatchControlsByPattern   {
    **/
   @Schema(description = "A glob expression matching the IDs of one or more controls to be selected.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getPattern() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getPattern() {
     return pattern;
   }
 

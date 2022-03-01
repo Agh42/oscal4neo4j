@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.model.AssemblyOscalMetadataLink;
 import io.swagger.model.AssemblyOscalMetadataProperty3;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -104,7 +105,7 @@ public class AvailabilityImpactLevel   {
   @Schema(required = true, description = "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.")
       @NotNull
 
-  @Pattern(regexp="^\S(.*\S)?$")   public String getBase() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getBase() {
     return base;
   }
 
@@ -123,7 +124,7 @@ public class AvailabilityImpactLevel   {
    **/
   @Schema(description = "The selected (Confidentiality, Integrity, or Availability) security impact level.")
   
-  @Pattern(regexp="^\S(.*\S)?$")   public String getSelected() {
+  @Pattern(regexp=ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getSelected() {
     return selected;
   }
 

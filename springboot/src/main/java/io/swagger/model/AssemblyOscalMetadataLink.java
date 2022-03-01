@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.oscal4neo4j.api.ValidationConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -79,7 +80,7 @@ public class AssemblyOscalMetadataLink   {
    **/
   @Schema(description = "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.")
   
-  @Pattern(regexp="^\\S(.*\\S)?$")   public String getMediaType() {
+  @Pattern(regexp= ValidationConstants.REGEX_MIN_ONE_CHAR)   public String getMediaType() {
     return mediaType;
   }
 
