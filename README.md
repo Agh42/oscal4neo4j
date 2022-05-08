@@ -96,7 +96,7 @@ We can deduce that there is an analogy between the ISO 27001 control A.14.2.8 ("
 
 ![](doc/img/pcidss-27001-via-csf.png)
 
-### *SCKG: A shortest-path connection between Cobit 5 APO-012.02 ("Analyse risk") and NIST 800-53rev4 PM-16 ("Treat awareness program") , again using a NIST CSF control as an intermediary*
+### *SCKG: A shortest-path connection between Cobit 5 APO-012.02 ("Analyse risk") and NIST 800-53rev4 PM-16 ("Threat awareness program") , again using a NIST CSF control as an intermediary*
 
 ![](doc/img/shortestPathCobitNist800-53-withQuery.png)
 
