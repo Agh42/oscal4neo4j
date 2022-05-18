@@ -1,5 +1,6 @@
 package io.swagger.configuration;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonTokenId;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -159,46 +160,42 @@ public class CustomInstantDeserializer<T extends Temporal>
     //NOTE: Timestamps contain no timezone info, and are always in configured TZ. Only
     //string values have to be adjusted to the configured TZ.
     switch (parser.getCurrentTokenId()) {
-      case JsonTokenId.ID_NUMBER_FLOAT: {
-        BigDecimal value = parser.getDecimalValue();
-        long seconds = value.longValue();
-        int nanoseconds = DecimalUtils.extractNanosecondDecimal(value, seconds);
-        return fromNanoseconds.apply(new FromDecimalArguments(
-            seconds, nanoseconds, getZone(context)));
+    case JsonTokenId.ID_NUMBER_FLOAT -> {
+      BigDecimal value = parser.getDecimalValue();
+      long seconds = value.longValue();
+      int nanoseconds = DecimalUtils.extractNanosecondDecimal(value, seconds);
+      return fromNanoseconds.apply(
+              new FromDecimalArguments(seconds, nanoseconds, getZone(context)));
+    }
+    case JsonTokenId.ID_NUMBER_INT -> {
+      long timestamp = parser.getLongValue();
+      if (context.isEnabled(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS)) {
+        return this.fromNanoseconds.apply(
+                new FromDecimalArguments(timestamp, 0, this.getZone(context)));
       }
-
-      case JsonTokenId.ID_NUMBER_INT: {
-        long timestamp = parser.getLongValue();
-        if (context.isEnabled(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS)) {
-          return this.fromNanoseconds.apply(new FromDecimalArguments(
-              timestamp, 0, this.getZone(context)
-          ));
-        }
-        return this.fromMilliseconds.apply(new FromIntegerArguments(
-            timestamp, this.getZone(context)
-        ));
+      return this.fromMilliseconds.apply(
+              new FromIntegerArguments(timestamp, this.getZone(context)));
+    }
+    case JsonTokenId.ID_STRING -> {
+      String string = parser.getText().trim();
+      if (string.length() == 0) {
+        return null;
       }
-
-      case JsonTokenId.ID_STRING: {
-        String string = parser.getText().trim();
-        if (string.length() == 0) {
-          return null;
-        }
-        if (string.endsWith("+0000")) {
-          string = string.substring(0, string.length() - 5) + "Z";
-        }
-        T value;
-        try {
-          TemporalAccessor acc = _formatter.parse(string);
-          value = parsedToValue.apply(acc);
-          if (context.isEnabled(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)) {
-            return adjust.apply(value, this.getZone(context));
-          }
-        } catch (DateTimeException e) {
-          throw _peelDTE(e);
-        }
-        return value;
+      if (string.endsWith("+0000")) {
+        string = string.substring(0, string.length() - 5) + "Z";
       }
+      T value;
+      try {
+        TemporalAccessor acc = _formatter.parse(string);
+        value = parsedToValue.apply(acc);
+        if (context.isEnabled(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)) {
+          return adjust.apply(value, this.getZone(context));
+        }
+      } catch (DateTimeException e) {
+        throw _peelDTE(e);
+      }
+      return value;
+    }
     }
     throw context.mappingException("Expected type float, integer, or string.");
   }

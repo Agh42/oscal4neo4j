@@ -12,6 +12,10 @@ import io.swagger.model.AssemblyOscalMetadataResponsibleRole;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -23,8 +27,15 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-02-24T08:30:46.962624+01:00[Europe/Berlin]")
 
-
+@Node
 public class AssemblyOscalComponentDefinitionDefinedComponent   {
+
+  @Id
+  @GeneratedValue
+  @JsonProperty
+  private Long id;
+
+
   @JsonProperty("uuid")
   private String uuid = null;
 
