@@ -3,7 +3,7 @@
 
 // 5.1 Link controls:
 
-WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/baselines/rev4/json/FedRAMP_rev4_LI-SaaS-baseline_profile.json" AS url
+WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/baselines/rev4/json/FedRAMP_rev4_LI_SaaS-baseline_profile.json" AS url
 CALL apoc.load.json(url, '$.profile') YIELD value
 UNWIND value AS profile
 
@@ -28,25 +28,25 @@ MERGE (p)-[:INCLUDES_CONTROL]->(c1);
 // a synthetic compound id for the members of the additions array (see below)
 // so we're able to reference them in te next separate step.
 
-WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/baselines/rev4/json/FedRAMP_rev4_LI-SaaS-baseline_profile.json" AS url
+WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/baselines/rev4/json/FedRAMP_rev4_LI_SaaS-baseline_profile.json" AS url
 CALL apoc.load.json(url, '$.profile') YIELD value
 UNWIND value AS profile
 
-UNWIND keys(profile.modify.`set-parameters`) AS setparam
-MATCH (pa:ControlParam) WHERE pa.id = setparam
+UNWIND profile.modify.`set-parameters` AS setparam
+MATCH (pa:ControlParam) WHERE pa.id = setparam.`param-id`
 MATCH (pr:Profile{name:"FedRAMP_LI_SaaS"})
 
 MERGE (pr)-[:SET_PARAM]->(sp:SetParam)-[:CONSTRAINS]->(pa)
-SET sp.id = setparam
+SET sp.id = setparam.`param-id`
 SET sp.layer = 'Profile'
-SET sp.constraint = profile.modify.`set-parameters`[setparam].constraints[0].description
-SET sp.guideline = profile.modify.`set-parameters`[setparam].guidelines[0].prose
+SET sp.constraint = setparam.constraints[0].description
+SET sp.guideline = setparam.guidelines[0].prose
 
 WITH profile,pr
 
 UNWIND profile.modify.alters AS alteration
 MATCH (cta:rev5Control)
-WHERE cta.id = alteration.`control-id`
+  WHERE cta.id = alteration.`control-id`
 
 UNWIND alteration.adds AS addition
 MERGE (pr)-[:ALTERATION]->(add:Addition)-[:ADD_TO]->(cta)
@@ -66,11 +66,10 @@ SET propNode.class = prop.class
 SET propNode.remarks = prop.remarks
 SET propNode.layer = 'Profile';
 
-
 // 5.2b Add alteration parts:
 // (with props)
 
-WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/baselines/rev4/json/FedRAMP_rev4_LI-SaaS-baseline_profile.json" AS url
+WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/baselines/rev4/json/FedRAMP_rev4_LI_SaaS-baseline_profile.json" AS url
 CALL apoc.load.json(url, '$.profile') YIELD value
 UNWIND value AS profile
 UNWIND profile.modify.alters AS alteration
@@ -95,7 +94,7 @@ SET partPropNode.layer = 'Profile';
 
 // 5.2.c Add parts' subparts (with props):
 
-WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/baselines/rev4/json/FedRAMP_rev4_LI-SaaS-baseline_profile.json" AS url
+WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/baselines/rev4/json/FedRAMP_rev4_LI_SaaS-baseline_profile.json" AS url
 CALL apoc.load.json(url, '$.profile') YIELD value
 UNWIND value AS profile
 UNWIND profile.modify.alters AS alteration
@@ -122,7 +121,7 @@ SET partL2PropNode.layer = 'Profile';
 
 // 5.3 Load alterations: remove props
 
-WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/baselines/rev4/json/FedRAMP_rev4_LI-SaaS-baseline_profile.json" AS url
+WITH "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/baselines/rev4/json/FedRAMP_rev4_LI_SaaS-baseline_profile.json" AS url
 CALL apoc.load.json(url, '$.profile') YIELD value
 UNWIND value AS profile
 
