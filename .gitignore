@@ -1,2 +1,7 @@
-/springboot/build/
-/springboot/.gradle/
+# Default ignored files
+/shelf/
+/workspace.xml
+/.gradle/
+/build/
+/bin/
+/.idea/
