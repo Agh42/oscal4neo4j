@@ -80,10 +80,8 @@ public class SystemSecurityPlansApiController implements SystemSecurityPlansApi 
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<OSCALSsp>>(objectMapper.readValue(
-                        "[{ \"method\": \"NOT_IMPLEMENTED\"}]",
-                                                List.class), HttpStatus.NOT_IMPLEMENTED);
-//                return new ResponseEntity<List<OSCALSsp>>(objectMapper.readValue("[ {\n" +
+                return new ResponseEntity<List<OSCALSsp>>(objectMapper.readValue("[ { \"method\": \"NOT_IMPLEMENTED\" }]",
+                        List.class), HttpStatus.NOT_IMPLEMENTED);
 //                        "  \"system-security-plan\" : {\n" +
 //                        "    \"system-implementation\" : {\n" +
 //                        "      \"inventory-items\" : [ {\n" +
