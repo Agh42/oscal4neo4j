@@ -1,0 +1,20 @@
+server:
+    port: 8080
+    servlet:
+        contextPath: /oscal/v1
+spring:
+    neo4j:
+        uri: bolt://localhost:7687
+        authentication:
+            username: neo4j
+            password: secret
+    jackson:
+        date-format: io.swagger.RFC3339DateFormat
+        serialization:
+            WRITE_DATES_AS_TIMESTAMPS: false
+springfox:
+    documentation:
+        open-api:
+            v3:
+                path: /api-docs
+
