@@ -62,6 +62,9 @@ There are also scripts to scrape the [FedRAMP and NIST profiles](https://pages.n
 These scripts will scrape the [FedRAMP](https://github.com/GSA/fedramp-automation) profiles (LOW, MEDIUM, HIGH) form the Github repository directly into Neo4J. They will be linked to the previously imported 800-53 controls and control enhancements
 so make sure that you have imported them first.
 
+### *Example: query all controls in family IA for the LOW profile:*
+![](doc/img/controls-low-ia.png)
+
 ### *Example: a FedRAMP profile can constrain control parameters to specific values*
 
 Here a time range parameter of control enhancement AV-2.2 is constrained to a value of "24 hours from last use". 
