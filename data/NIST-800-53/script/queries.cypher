@@ -126,3 +126,9 @@ WITH p, c, part
 MATCH (part)-[:HAS_PROP]->(prop)
 OPTIONAL MATCH (part)-[:HAS_PART]->(subpart)
 RETURN c, part, prop, subpart;
+
+# Select all controls (incl. enhancements) that are linked to profile "LOW" of family IA:
+MATCH q=(p:Profile{name:"LOW"})-[:INCLUDES_CONTROL]->(c)-[:IN_GROUP|IS_ENHANCEMENT_OF*]-(g:rev5Group{id:"ia"})
+RETURN q;
+
+
