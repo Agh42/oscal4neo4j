@@ -4,6 +4,12 @@ This repository features scripts written in the Cypher query language that can b
 
 You will need the APOC library to scrape them directly from Github into the database. There is no need to download the files first.
 
+For further background information on these scripts you may want to watch this presentation: 
+
+[YouTube: OSCAL4Neo4j](https://youtu.be/FVCFmSIsYic)
+
+The slides from this presentation are available [here](https://www.slideshare.net/neo4j/cybersecurity-automation-with-oscal-and-neo4j)
+
 ## OSCAL: NIST 800-53 rev5 
 ### Now also including SP 800-53A (Assessment Layer)
 
